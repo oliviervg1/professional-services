@@ -84,7 +84,7 @@ function main() {
   OS_VALUE_ARRAY=(el5 el6 el7 sles11 sles12 lucid precise trusty squeeze wheezy)
 
   # Link to GCS connector jar file and flag to validate the file existence
-  GCSJAR_LINK="https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop2-latest.jar"
+  GCSJAR_LINK="https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-1.7.0-hadoop2.jar"
   GCSJAR_FLAG="1"
 
   NUM_ARG=$#
@@ -169,7 +169,7 @@ function main() {
 
   # Download gcs connector jar and copy all folder content to parcel location
   # Set flag for further parcel file existence validation
-  curl -o gcs-connector-hadoop2-latest.jar --fail ${GCSJAR_LINK} || GCSJAR_FLAG="0"
+  curl -o gcs-connector-1.7.0-hadoop2.jar --fail ${GCSJAR_LINK} || GCSJAR_FLAG="0"
 
   # Validate if package downloaded properly
   if [[ ${GCSJAR_FLAG} = "0" ]]; then
@@ -178,13 +178,13 @@ function main() {
   fi
 
   # Copy GCS connector jar
-  cp gcs-connector-hadoop2-latest.jar ${PARCEL_FULLNAME}/lib/hadoop/lib/
+  cp gcs-connector-1.7.0-hadoop2.jar ${PARCEL_FULLNAME}/lib/hadoop/lib/
   
   # Copy service account key file
   cp *.json ${PARCEL_FULLNAME}/lib/hadoop/lib/
 
   # Check the existence of the GCS jar file in lib folder
-  [[ -f ${PARCEL_FULLNAME}/lib/hadoop/lib/gcs-connector-hadoop2-latest.jar ]] || GCSJAR_FLAG="0"
+  [[ -f ${PARCEL_FULLNAME}/lib/hadoop/lib/gcs-connector-1.7.0-hadoop2.jar ]] || GCSJAR_FLAG="0"
 
   if [[ ${GCSJAR_FLAG} = "0" ]]; then
     echo "Error: hadoop connector is missing from "$(pwd)/${PARCEL_FULLNAME}/lib/hadoop/lib/
