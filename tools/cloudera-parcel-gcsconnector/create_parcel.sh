@@ -226,7 +226,7 @@ EOL
 
 cat >>${PARCEL_FULLNAME}/meta/${FILE_NAME}.sh<<EOL
 #!/bin/bash
-export HADOOP_CLASSPATH=\$HADOOP_CLASSPATH:/opt/cloudera/parcels/${FILE_NAME}-${VERSION}/lib/hadoop/lib/gcs-connector-latest-hadoop2.jar
+export HADOOP_CLASSPATH=\$HADOOP_CLASSPATH:/opt/cloudera/parcels/${FILE_NAME}-${VERSION}/lib/hadoop/lib/gcs-connector-1.7.0-hadoop2.jar
 EOL
 
   if [[ $? -ne 0 ]]; then
